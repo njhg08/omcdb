@@ -1,0 +1,21 @@
+{
+  "name": "backend-omcdb",
+  "version": "1.0.0",
+  "description": "Backend for the OrMin Calamansi Database",
+  "main": "server.js",
+  "scripts": {
+    "start": "node start",
+    "dev": "nodemon start"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "pg": "^8.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
