@@ -6,6 +6,6 @@ router.route('/municipalities').get(getMunicipalities)
 
 router.route('/barangays').get(getBarangays)
 
-router.route('/municipalities/:municipalityId').get(getBarangayGivenMunicipality)
+router.route('/municipalities/:municipalityId/barangays').get(getBarangayGivenMunicipality)
 
 module.exports = router;

@@ -13,7 +13,7 @@ app.use(cors())
 
 // // routes
 // app.use('/', require('./routes/index'))
-// app.use('/farmers', require('./routes/farmers'))
+app.use('/farmers', require('./routes/farmers'))
 app.use('/address', require('./routes/address'))
 // app.use('/pests', require('./routes/pests'))
 // app.use('/farms', require('./routes/farms'))
