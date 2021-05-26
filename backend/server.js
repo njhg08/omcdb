@@ -16,9 +16,10 @@ app.use(cors())
 app.use('/farmers', require('./routes/farmers'))
 app.use('/address', require('./routes/address'))
 app.use('/pests', require('./routes/pests'))
+app.use('/diseases', require('./routes/diseases'))
+app.use('/practices', require('./routes/practices'))
 // app.use('/farms', require('./routes/farms'))
-// app.use('/diseases', require('./routes/diseases'))
-// app.use('/practices', require('./routes/practices'))
+
 
 const port = process.env.PORT || 5000;
 

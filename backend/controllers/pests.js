@@ -13,8 +13,10 @@ exports.getPests = async(req, res) => {
 
 exports.addPest = async(req, res) => {
     try {
-        const {pest, description} = 
-        res.json(pests.rows)
+        const {pest, description} = req.body
+        await pool.query(pestQueries.ADD_NEW_PEST,[pest, description])
+        
+        res.status(200).json({message: 'Added successfully'})
     } catch (error) {
         res.status(500).json({error: `${error.message}`})
     }
