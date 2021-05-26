@@ -1,0 +1,11 @@
+header {
+    padding: 10px 10px;
+}
+
+header nav ul {
+    display: flex;
+}
+
+header nav ul li {
+    margin: 0 20px;
+}

@@ -1,38 +1,44 @@
 import React, { useEffect, useState } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { getBarangays, getMunicipalities } from '../actions/addressActions'
+import { getBarangays, getMunicipalities } from '../../actions/addressActions'
 
-const Test = () => {
+const FarmerAddressDropDown = ({municipality, barangay, selectedMunicipality, selectedBarangay}) => {
     const dispatch = useDispatch()
-    const [selectedMunicipality, setSelectedMunicipality] = useState(1)
 
     const municipalities = useSelector((state) => state.municipalitiesList)
     const barangays = useSelector(state => state.barangaysList)
 
     const handleMunicipalitySelect = (e) => {
-        setSelectedMunicipality(parseInt(e.target.value))
+        selectedMunicipality(parseInt(e.target.value))
+    }
+
+    const handleBarangaySelect = (e) => {
+        selectedBarangay(e.target.value)
     }
 
     useEffect(() => {
         dispatch(getMunicipalities())
-        dispatch(getBarangays(selectedMunicipality))
-    }, [dispatch, barangays, selectedMunicipality])
+        dispatch(getBarangays(municipality))
+    }, [dispatch, barangays, municipality])
 
     return (
-        <div>
-            <select onChange={handleMunicipalitySelect} value={selectedMunicipality}>
+        <>
+            <label>Address:</label>
+            <select onChange={handleMunicipalitySelect} value={municipality}>
+                <option value='0' disabled>--SELECT MUNICIPALITY--</option>
                 {municipalities.map(municipality => (
                     <option key={municipality.id} value={municipality.id}>{municipality.municipality}</option>
                 ))}
             </select>
 
-            <select>
+            <select value={barangay} onChange={handleBarangaySelect}>
+                <option value='0' disabled>--SELECT BARANGAY--</option>
                 {barangays && barangays.map(barangay => (
                     <option key={barangay.id}>{!barangay.other_name ? barangay.barangay : `${barangay.barangay} (${barangay.other_name})`}</option>
                 ))}
             </select>
-        </div>
+        </>
     )
 }
 
-export default Test
+export default FarmerAddressDropDown

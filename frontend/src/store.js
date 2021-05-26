@@ -3,10 +3,13 @@ import thunk from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 
 import { barangaysReducer, municipalitiesReducer } from './reducers/addressReducers'
+import { farmerDetailsReducer, farmersListReducer } from './reducers/farmersReducers'
 
 const reducer = combineReducers({
     municipalitiesList: municipalitiesReducer,
-    barangaysList: barangaysReducer
+    barangaysList: barangaysReducer,
+    farmersList: farmersListReducer,
+    farmerDetails: farmerDetailsReducer
 })
 
 const middleware = [thunk]
