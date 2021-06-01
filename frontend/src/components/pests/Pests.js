@@ -1,10 +1,13 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
+import PestsList from './PestsList'
 
 const Pests = () => {
     return (
         <div>
             Pests
-            <button>Add Pest</button>
+            <Link to='/pests/addpest'>Add Pest</Link>
+            <PestsList/>
         </div>
     )
 }

@@ -12,6 +12,8 @@ import Footer from './components/footer/Footer'
 import FarmerFormModal from './components/farmers/FarmerFormModal'
 import FarmerProfile from './components/farmers/FarmerProfile'
 import FarmForm from './components/farms/FarmForm'
+import PestForm from './components/pests/PestForm'
+import DiseaseForm from './components/diseases/DiseaseForm'
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -35,7 +37,9 @@ const App = () => {
             </Route> 
             <Route path='/farms'  component={Farms} />
             <Route path='/farms/addfarm' component={FarmForm} />
+            <Route path='/pests/addpest' component={PestForm}/>
             <Route path='/pests'  component={Pests} />
+            <Route path='/diseases/adddisease'  component={DiseaseForm} />
             <Route path='/diseases'  component={Diseases} />
             <Route path='/practices'  component={Practices} />
             <Route path='/maps'  component={Maps} />

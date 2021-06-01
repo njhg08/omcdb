@@ -13,8 +13,8 @@ exports.getDiseases = async(req, res) => {
 
 exports.addDisease = async(req, res) => {
     try {
-        const {disease, description} = req.body
-        await pool.query(diseasesQueries.ADD_NEW_DISEASE,[disease, description])
+        const {disease, diseaseDescription} = req.body
+        await pool.query(diseasesQueries.ADD_NEW_DISEASE,[disease, diseaseDescription])
         
         res.status(200).json({message: 'Added successfully'})
     } catch (error) {

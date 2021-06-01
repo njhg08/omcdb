@@ -1,10 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 
 const Practices = () => {
     return (
         <div>
-            Practices
-            <button>Add Practices</button>
+            <h2>Farming Practices</h2>
+            <Link to='/practices/addpractice'>Add Farming Practice</Link>
         </div>
     )
 }
