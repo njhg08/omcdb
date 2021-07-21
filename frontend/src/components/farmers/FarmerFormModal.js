@@ -1,4 +1,6 @@
 import React, { useRef, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { addFarmer } from '../../actions/farmersActions'
 import FarmerAddressDropDown from './FarmerAddressDropDown'
 
 const FarmerFormModal = ({isModalOpen, toggleModal}) => {
@@ -18,8 +20,15 @@ const FarmerFormModal = ({isModalOpen, toggleModal}) => {
     const [maleHousehold, setMaleHousehold] = useState(0)
     const [femaleHousehold, setFemaleHousehold] = useState(0)
 
+    const dispatch = useDispatch()
+
     const addNewFarmer = (e) => {
         e.preventDefault()
+        const farmer = {
+            firstName, lastName, sex: Number(sex), phoneNumber, civilStatus: Number(civilStatus), municipality: Number(selectedMunicipality), barangay: Number(selectedBarangay), age, farmingExperience, education: Number(education), maleHousehold, femaleHousehold, financing: Number(financing)
+        }
+
+        dispatch(addFarmer(farmer))
         toggleModal()
     }
 
@@ -78,7 +87,7 @@ const FarmerFormModal = ({isModalOpen, toggleModal}) => {
                     </div>
                 </div>
                 <div className='input-group input-group-address'>
-                    <FarmerAddressDropDown municipality={selectedMunicipality} selectedMunicipality={setSelectedMunicipality} barangay={selectedBarangay}selectedBarangay={setSelectedBarangay}/>
+                    <FarmerAddressDropDown municipality={selectedMunicipality} selectedMunicipality={setSelectedMunicipality} barangay={selectedBarangay} selectedBarangay={setSelectedBarangay}/>
                 </div>
                 
                 <div className='input-group input-group-with-subgroup-2'>
@@ -93,8 +102,9 @@ const FarmerFormModal = ({isModalOpen, toggleModal}) => {
                             <option value="1">None</option>
                             <option value="2">Elementary</option>
                             <option value="3">High School</option>
-                            <option value="4">Undergraduate</option>
-                            <option value="5">Graduate</option>
+                            <option value="4">College</option>
+                            <option value="5">Vocational</option>
+                            <option value="6">Graduate School</option>
                         </select>
                     </div>
                     <div>

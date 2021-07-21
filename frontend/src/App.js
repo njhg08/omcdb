@@ -11,9 +11,14 @@ import Farms from './components/farms/Farms'
 import Footer from './components/footer/Footer'
 import FarmerFormModal from './components/farmers/FarmerFormModal'
 import FarmerProfile from './components/farmers/FarmerProfile'
-import FarmForm from './components/farms/FarmForm'
+import FarmDetailsForm from './components/farms/FarmDetailsForm'
 import PestForm from './components/pests/PestForm'
 import DiseaseForm from './components/diseases/DiseaseForm'
+import PracticeForm from './components/practices/PracticeForm'
+import FarmerProfileEdit from './components/farmers/FarmerProfileEdit'
+import FarmProfile from './components/farms/FarmProfile'
+import FarmProfileEdit from './components/farms/FarmProfileEdit'
+
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -32,15 +37,19 @@ const App = () => {
         <div className="container">
           <Switch>
             <Route path='/farmers/:id' component={FarmerProfile} exact/>
+            <Route path='/farmers/:id/edit' component={FarmerProfileEdit} exact/>
             <Route path='/farmers' exact>
               <Farmers toggleModal={toggleModal} />
             </Route> 
+            <Route path='/farmers/:id/farms/addfarm/details' component={FarmDetailsForm} exact />
+            <Route path='/farms/:id'  component={FarmProfile} exact />
+            <Route path='/farms/:id/edit'  component={FarmProfileEdit} exact />
             <Route path='/farms'  component={Farms} />
-            <Route path='/farms/addfarm' component={FarmForm} />
             <Route path='/pests/addpest' component={PestForm}/>
             <Route path='/pests'  component={Pests} />
             <Route path='/diseases/adddisease'  component={DiseaseForm} />
             <Route path='/diseases'  component={Diseases} />
+            <Route path='/practices/addpractice'  component={PracticeForm} />
             <Route path='/practices'  component={Practices} />
             <Route path='/maps'  component={Maps} />
             <Route path='/' component={Dashboard} exact  />

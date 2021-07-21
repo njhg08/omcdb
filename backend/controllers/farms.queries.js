@@ -1,0 +1,16 @@
+module.exports = {
+    FETCH_ALL_FARMS:'SELECT farms.id, ST_X(geom) as longitude, ST_Y(geom) as latitude, fk_farmer, first_name, last_name, farms.fk_municipality, municipality, farms.fk_barangay, barangay, farm_area, less_than_five_years_trees, five_years_or_more_trees, peak_season_production, off_season_production, farm_notes FROM farms INNER JOIN farmers ON fk_farmer = farmers.id INNER JOIN municipalities ON farms.fk_municipality = municipalities.id INNER JOIN barangays ON farms.fk_barangay = barangays.id',
+    ADD_NEW_FARM: 'INSERT INTO farms(geom, fk_farmer, farm_area, less_than_five_years_trees,five_years_or_more_trees, peak_season_production, off_season_production, fk_municipality, fk_barangay, farm_notes) VALUES(ST_MakePoint($1, $2), $3, $4, $5, $6, $7, $8, $9, $10, $11) returning id',
+    ADD_FARM_PESTS_DETAILS: 'INSERT INTO mm_farm_pests(fk_farm, fk_pest) VALUES($1, $2)',
+    ADD_FARM_DISEASES_DETAILS: 'INSERT INTO mm_farm_diseases(fk_farm, fk_disease) VALUES($1, $2)',
+    ADD_FARM_FARM_PRACTICES_DETAILS: 'INSERT INTO mm_farm_farm_practices(fk_farm, fk_farm_practice) VALUES($1, $2)',
+    FETCH_FARMER_FARMS: 'SELECT farms.id, ST_X(geom) as longitude, ST_Y(geom) as latitude, fk_farmer, farms.fk_municipality, municipality, farms.fk_barangay, barangay, farm_area, less_than_five_years_trees, five_years_or_more_trees, peak_season_production, off_season_production, farm_notes FROM farms INNER JOIN municipalities ON farms.fk_municipality = municipalities.id INNER JOIN barangays ON farms.fk_barangay = barangays.id WHERE fk_farmer=$1',
+    FETCH_FARM:'SELECT farms.id, ST_X(geom) as longitude, ST_Y(geom) as latitude, fk_farmer, first_name, last_name, farms.fk_municipality, municipality, farms.fk_barangay, barangay, farm_area, less_than_five_years_trees, five_years_or_more_trees, peak_season_production, off_season_production, farm_notes FROM farms INNER JOIN farmers ON fk_farmer = farmers.id INNER JOIN municipalities ON farms.fk_municipality = municipalities.id INNER JOIN barangays ON farms.fk_barangay = barangays.id WHERE farms.id=$1',
+    FETCH_FARM_PESTS: 'SELECT mm_farm_pests.id, fk_pest, pest, fk_level,  level FROM mm_farm_pests INNER JOIN pests on fk_pest = pests.id INNER JOIN tlkp_levels ON fk_level = tlkp_levels.id WHERE fk_farm=$1 ORDER by pest',
+    UPDATE_FARM_PEST: 'UPDATE mm_farm_pests SET fk_level = $1 WHERE id = $2',
+    FETCH_FARM_DISEASES: 'SELECT mm_farm_diseases.id, fk_disease, disease, fk_level,  level FROM mm_farm_diseases INNER JOIN diseases on fk_disease = diseases.id INNER JOIN tlkp_levels ON fk_level = tlkp_levels.id WHERE fk_farm=$1 ORDER by disease',
+    UPDATE_FARM_DISEASE: 'UPDATE mm_farm_diseases SET fk_level = $1 WHERE id = $2',
+    FETCH_FARM_PRACTICES: 'SELECT mm_farm_farm_practices.id, fk_farm_practice, farming_practice, practiced_in_farm FROM mm_farm_farm_practices INNER JOIN farming_practices ON fk_farm_practice = farming_practices.id WHERE fk_farm=$1 ORDER by farming_practice',
+    UPDATE_FARM_PRACTICE: 'UPDATE mm_farm_farm_practices SET practiced_in_farm= $1 WHERE id = $2 returning *',
+    UPDATE_FARM_DETAILS: 'UPDATE farms set geom=ST_MakePoint($1, $2), fk_farmer=$3, farm_area=$4, less_than_five_years_trees=$5, five_years_or_more_trees=$6, peak_season_production=$7, off_season_production=$8, fk_municipality=$9, fk_barangay=$10, farm_notes=$11 WHERE id=$12'
+}

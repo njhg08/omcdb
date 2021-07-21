@@ -13,7 +13,7 @@ const FarmerAddressDropDown = ({municipality, barangay, selectedMunicipality, se
     }
 
     const handleBarangaySelect = (e) => {
-        selectedBarangay(e.target.value)
+        selectedBarangay(parseInt(e.target.value))
     }
 
     useEffect(() => {
@@ -34,7 +34,7 @@ const FarmerAddressDropDown = ({municipality, barangay, selectedMunicipality, se
             <select value={barangay} onChange={handleBarangaySelect}>
                 <option value='0' disabled>--SELECT BARANGAY--</option>
                 {barangays && barangays.map(barangay => (
-                    <option key={barangay.id}>{!barangay.other_name ? barangay.barangay : `${barangay.barangay} (${barangay.other_name})`}</option>
+                    <option key={barangay.id} value={barangay.id}>{!barangay.other_name ? barangay.barangay : `${barangay.barangay} (${barangay.other_name})`}</option>
                 ))}
             </select>
         </>

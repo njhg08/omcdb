@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PracticesList from './PracticesList'
 
 
 const Practices = () => {
@@ -7,6 +8,7 @@ const Practices = () => {
         <div>
             <h2>Farming Practices</h2>
             <Link to='/practices/addpractice'>Add Farming Practice</Link>
+            <PracticesList/>
         </div>
     )
 }

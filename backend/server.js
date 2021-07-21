@@ -18,7 +18,8 @@ app.use('/address', require('./routes/address'))
 app.use('/pests', require('./routes/pests'))
 app.use('/diseases', require('./routes/diseases'))
 app.use('/practices', require('./routes/practices'))
-// app.use('/farms', require('./routes/farms'))
+app.use('/farms', require('./routes/farms'))
+app.use('/statistics', require('./routes/statistics'))
 
 
 const port = process.env.PORT || 5000;

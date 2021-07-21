@@ -6,15 +6,17 @@ import {Link} from 'react-router-dom'
 const FarmersList = () => {
     const dispatch = useDispatch()
 
-    const farmers = useSelector(state => state.farmersList)
+    const farmersList = useSelector(state => state.farmersList)
+    const {farmers} = farmersList
 
 
     useEffect(() => {
         dispatch(getFarmers())
-        console.log(farmers)
-    }, [dispatch])
+    }, [dispatch, farmers])
 
     return (
+    <>
+        <p>Number of Farmers: {farmers.length}</p>
         <table className="farmers-table">
             <thead>
                 <tr>
@@ -38,6 +40,7 @@ const FarmersList = () => {
                 
             </tbody>
         </table>
+    </>
     )
 }
 
