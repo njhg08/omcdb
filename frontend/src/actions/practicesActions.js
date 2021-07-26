@@ -24,7 +24,7 @@ export const addPractice = (practice, practiceDescription) => async(dispatch) =>
               'Content-Type': 'application/json',
             },
           }
-        const {data} = await axios.post(url, {practice, practiceDescription}, config)
+        const {data} = await axios.post(url, {farming_practice: practice, practiceDescription}, config)
 
         dispatch({type:PRACTICES_ADD_SUCCESS, payload: data})
 

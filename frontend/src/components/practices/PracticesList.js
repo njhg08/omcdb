@@ -15,7 +15,7 @@ const PracticesList = () => {
         <div>
             <ul>
                 {practices && practices.map(practice => (
-                    <li key={practice.id}>{practice.farming_practice}</li>
+                    <li key={practice.id}>{practice.farm_practice}</li>
                 ))}
             </ul>
         </div>

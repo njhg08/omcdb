@@ -10,7 +10,7 @@ module.exports = {
     UPDATE_FARM_PEST: 'UPDATE mm_farm_pests SET fk_level = $1 WHERE id = $2',
     FETCH_FARM_DISEASES: 'SELECT mm_farm_diseases.id, fk_disease, disease, fk_level,  level FROM mm_farm_diseases INNER JOIN diseases on fk_disease = diseases.id INNER JOIN tlkp_levels ON fk_level = tlkp_levels.id WHERE fk_farm=$1 ORDER by disease',
     UPDATE_FARM_DISEASE: 'UPDATE mm_farm_diseases SET fk_level = $1 WHERE id = $2',
-    FETCH_FARM_PRACTICES: 'SELECT mm_farm_farm_practices.id, fk_farm_practice, farming_practice, practiced_in_farm FROM mm_farm_farm_practices INNER JOIN farming_practices ON fk_farm_practice = farming_practices.id WHERE fk_farm=$1 ORDER by farming_practice',
+    FETCH_FARM_PRACTICES: 'SELECT mm_farm_farm_practices.id, fk_farm_practice, farm_practice, practiced_in_farm FROM mm_farm_farm_practices INNER JOIN farm_practices ON fk_farm_practice = farm_practices.id WHERE fk_farm=$1 ORDER by farm_practice',
     UPDATE_FARM_PRACTICE: 'UPDATE mm_farm_farm_practices SET practiced_in_farm= $1 WHERE id = $2 returning *',
     UPDATE_FARM_DETAILS: 'UPDATE farms set geom=ST_MakePoint($1, $2), fk_farmer=$3, farm_area=$4, less_than_five_years_trees=$5, five_years_or_more_trees=$6, peak_season_production=$7, off_season_production=$8, fk_municipality=$9, fk_barangay=$10, farm_notes=$11 WHERE id=$12'
 }

@@ -19,7 +19,7 @@ const FarmPracticesRow = ({practice, handleSave, reload}) => {
         <tr>
             {isEditMode ? (
                 <>
-                    <td>{practice.farming_practice}</td> 
+                    <td>{practice.farm_practice}</td> 
                     <td>
                         <select value={selectedFarmPracticeLevel} onChange={e => handleLevelChange(e, practice.id, practice.farming_practice, selectedFarmPracticeLevel)}>
                             <option value="true">true</option>
@@ -33,7 +33,7 @@ const FarmPracticesRow = ({practice, handleSave, reload}) => {
                 </>
             ) : (
                 <>
-                    <td>{practice.farming_practice}</td> 
+                    <td>{practice.farm_practice}</td> 
                     <td>
                         {String(practice.practiced_in_farm)}
                     </td>
