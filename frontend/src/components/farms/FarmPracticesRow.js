@@ -5,8 +5,7 @@ const FarmPracticesRow = ({practice, handleSave, reload}) => {
     const [selectedFarmPracticeLevel, setSelectedFarmPracticeLevel] = useState(practice.practiced_in_farm)
     const [isEditMode, setIsEditMode] = useState(false)
     const handleLevelChange = (e) => {
-        setSelectedFarmPracticeLevel(e.target.value)
-        
+        setSelectedFarmPracticeLevel(e.target.value === 'true')      
     }
 
     const handleOnSubmit = (e) => {
@@ -21,7 +20,7 @@ const FarmPracticesRow = ({practice, handleSave, reload}) => {
                 <>
                     <td>{practice.farm_practice}</td> 
                     <td>
-                        <select value={selectedFarmPracticeLevel} onChange={e => handleLevelChange(e, practice.id, practice.farming_practice, selectedFarmPracticeLevel)}>
+                        <select value={selectedFarmPracticeLevel} onChange={e => handleLevelChange(e)}>
                             <option value="true">true</option>
                             <option value="false">false</option>
                         </select>
